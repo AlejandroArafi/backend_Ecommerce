@@ -1,19 +1,16 @@
-const express = require('express') //importamos express
-const { registerUser } = require('../controllers/user.controller')
-const userRoutes = express.Router() //creamos un enrutador
+const express=require('express')
+
+const router= express.Router()
+
+const{ signup, getUsers, updateUser, deleteUser}=require('../controllers/user.controller')
 
 
-userRoutes.post('/register', registerUser)
+router.get('/', getUsers)
 
-userRoutes.post('/login', (req, resp)=>{
+router.post('/',signup)
 
-})
+router.put('/', updateUser)
 
-userRoutes.get('/', (req, resp)=>{
-    resp.status(200).json({
-        message: 'desde user routes'
-    }) 
-})
+router.delete('/', deleteUser)
 
-module.exports = {userRoutes}
-
+module.exports=router;
