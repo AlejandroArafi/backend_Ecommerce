@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
+        required: false,
         validate: {
           validator:function(v) {
             return /^[a-zA-Z0-9 ]{3,30}$/.test(v)
@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
       },
       addresse: {
         type: String,
-        require: true
+        require: false
       },
       rol: {
         type: String,
