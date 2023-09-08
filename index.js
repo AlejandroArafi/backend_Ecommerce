@@ -1,6 +1,7 @@
 require("dotenv").config(); //con dotenv accedes a las variables de entorno
 require('./models/User.model')
 const userRoutes = require("./routes/User.routes");
+const cors = require('cors')
 
     const express = require("express"); //llamamos a express
     const app = express(); //inicialización de la app
@@ -10,6 +11,11 @@ const userRoutes = require("./routes/User.routes");
     // el segundo parametro que recibe el metodo de MODEL es el esquema, el primero es la coleccion
     
     const port = process.env.PORT
+
+    const corsOptions = {
+        origin: process.env.FRONTEND_URL, 
+        optionSuccessStatus: 200
+    }
 
     
     app.get("/", (req, res) => {
@@ -35,7 +41,8 @@ app.delete("/", (req, res) => {
         mensaje: "ruta delete",
     });
 });
-app.use(express.json())
+app.use(cors(corsOptions))
+app.use(express.json()) //valida que la appa reciba datos en formato json
 app.use("/users", userRoutes); // middleware...todas las rutas que ingresen en /users, van a caer en userRoutes
 
 app.listen(port, () => {

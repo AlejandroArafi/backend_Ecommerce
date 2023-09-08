@@ -83,8 +83,8 @@ const deleteUser = async () => {
 };
 
 const login=async(req,res)=>{
-    const{email,password}=req.body
-    const emailLowerCase=email.toLowerCase()
+    const{mail,password}=req.body
+    const emailLowerCase=mail.toLowerCase()
     const passwordHash=hashPassword(password)
     
     try {     
@@ -116,10 +116,34 @@ const login=async(req,res)=>{
     }
 }
 
+const getUserById = async (req, res)=>{
+    const {_id} = req.params
+    try {
+        const user = await User.findOne({_id})
+        if(user) {
+            return res.status(200).json({
+                message: 'ok',
+                detail: user
+            })
+        }
+        return res.status(404).json({
+            message: ' not found'
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'server error',
+            error
+        })
+    }
+}
+
 module.exports = {
   signup,
   getUsers,
   updateUser,
   deleteUser,
-  login
+  login,
+  getUserById
 };
