@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: false,
+        required: true,
         validate: {
           validator:function(v) {
             return /^[a-zA-Z0-9 ]{3,30}$/.test(v)
