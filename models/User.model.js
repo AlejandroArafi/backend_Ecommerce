@@ -35,7 +35,8 @@ const UserSchema = new mongoose.Schema({
       },
       rol: {
         type: String,
-        require: false
+        require: false,
+        default:'USER'
       },
       premium: {
         type: Boolean,
