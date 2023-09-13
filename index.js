@@ -1,6 +1,6 @@
 require("dotenv").config(); //con dotenv accedes a las variables de entorno
 require('./models/User.model')
-const userRoutes = require("./routes/User.routes.js");
+const userRoutes = require("./routes/User.routes");
 // const userRoutes = require('./routesUser.routes')
 
 const cors = require('cors')
