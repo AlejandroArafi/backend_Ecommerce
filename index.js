@@ -9,7 +9,7 @@ const express = require("express"); //llamamos a express
 const app = express(); //inicialización de la app
 
 const mongoose = require("mongoose");
-const { router } = require("./routes/User.routes");
+const { router } = require("./router/User.routes");
 mongoose.connect(process.env.MONGO_URI + "wineStore");
 // el segundo parametro que recibe el metodo de MODEL es el esquema, el primero es la coleccion
 // const userRoutes = require("./routes/User.routes.js");
