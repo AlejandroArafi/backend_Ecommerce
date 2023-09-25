@@ -3,7 +3,7 @@ require('./models/User.model')
 // const userRoutes = require('./routesUser.routes')
 
 const cors = require('cors')
-const userRoutes = require("./routes/User.routes");
+const userRoutes = require("./routes/User.routes.js");
 
     const express = require("express"); //llamamos a express
     const app = express(); //inicialización de la app
