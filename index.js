@@ -9,9 +9,12 @@ const express = require("express"); //llamamos a express
 const app = express(); //inicialización de la app
 
 const mongoose = require("mongoose");
+const { router } = require("./routes/User.routes");
 mongoose.connect(process.env.MONGO_URI + "wineStore");
 // el segundo parametro que recibe el metodo de MODEL es el esquema, el primero es la coleccion
 // const userRoutes = require("./routes/User.routes.js");
+
+
 
 const port = process.env.PORT;
 
@@ -21,7 +24,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json()); //valida que la app reciba datos en formato json
-// app.use("/users", userRoutes); // middleware...todas las rutas que ingresen en /users, van a caer en userRoutes
+app.use("/users", router); // middleware...todas las rutas que ingresen en /users, van a caer en userRoutes
 
 app.get("/", (req, res) => {
   return res.status(200).json({

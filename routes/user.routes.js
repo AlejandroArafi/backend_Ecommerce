@@ -17,4 +17,4 @@ router.post('/login', login)
 
 router.get('/:_id', auth, getUserById)
 
-module.exports = router
+module.exports = {router}
